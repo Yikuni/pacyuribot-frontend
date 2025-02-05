@@ -28,7 +28,7 @@
           <el-text size="small" type="info">已有账号？登录</el-text>
         </el-button>
       </div>
-      <el-button class="formItem" type="primary" id="button" @click="register" :loading="loading">
+      <el-button class="formItem" type="primary" id="button" @click="registerOrLogin" :loading="loading">
         {{isRegister?"注册":"登录"}} &nbsp<el-icon><Right /></el-icon>
       </el-button>
     </div>
@@ -90,10 +90,13 @@ const register = async () => {
   }
 }
 
-const login = ()=>{
-  if(store.methods.login()){
-    router.push('/')
+const login = async ()=>{
+  loading.value = true
+  const result = await store.methods.login(form.email, form.password)
+  if(result){
+    await router.push('/')
   }else{
+    loading.value = false
     ElMessage.warning("用户名或密码错误")
   }
 }

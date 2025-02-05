@@ -18,7 +18,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 }
 
 onBeforeMount(()=>{
-  if (store.modelInfo === {}){
+  if (store.modelInfo.id === ''){
     router.push("/main/models")
   }
 })

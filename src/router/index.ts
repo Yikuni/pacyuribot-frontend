@@ -15,6 +15,7 @@ import CreateModel from "../views/CreateModel.vue";
 import AddData from "../views/model/AddData.vue";
 import AddDataUpload from "../views/model/AddDataUpload.vue";
 import AddDataCrawl from "../views/model/AddDataCrawl.vue";
+import DatasourceInfo from "../views/model/DatasourceInfo.vue";
 
 // 路由配置
 const routes = [
@@ -85,6 +86,10 @@ const routes = [
                         path: '/main/model/addDataCrawl',
                         name: 'addDataCrawl',
                         component: AddDataCrawl
+                    },{
+                        path: '/main/model/info/:id',
+                        name: 'datasourceInfo',
+                        component: DatasourceInfo
                     },
                 ]
             }
