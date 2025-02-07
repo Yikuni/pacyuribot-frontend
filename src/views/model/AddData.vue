@@ -5,7 +5,7 @@
 <template>
 <div class="mainContent">
   <el-space :size="50" wrap>
-    <router-link to="/main/model/addDataUpload">
+    <router-link to="/main/model/datasourceCreate/upload">
       <el-card  style="width: 250px">
         <template #header>
           <el-image style="width: 128px; height: 128px" src="/images/upload.svg" />
@@ -15,7 +15,7 @@
         </div>
       </el-card>
     </router-link>
-    <router-link to="/main/model/addDataUpload">
+    <router-link to="/main/model/datasourceCreate/crawl">
       <el-card  style="width: 250px">
         <template #header>
           <el-image style="width: 128px; height: 128px" src="/images/Crawler.svg" />

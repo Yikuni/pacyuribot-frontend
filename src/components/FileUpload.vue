@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {store} from "../store.ts";
 import {ElMessage} from "element-plus";
+import {UploadFilled} from "@element-plus/icons-vue";
 const props = defineProps({
   datasource_id: {
     type: String,

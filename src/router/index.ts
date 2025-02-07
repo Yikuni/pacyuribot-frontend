@@ -13,9 +13,8 @@ import AddToSite from "../views/model/AddToSite.vue";
 import EditAppearance from "../views/model/EditAppearance.vue";
 import CreateModel from "../views/CreateModel.vue";
 import AddData from "../views/model/AddData.vue";
-import AddDataUpload from "../views/model/AddDataUpload.vue";
-import AddDataCrawl from "../views/model/AddDataCrawl.vue";
 import DatasourceInfo from "../views/model/DatasourceInfo.vue";
+import DatasourceCreate from "../views/model/DatasourceCreate.vue";
 
 // 路由配置
 const routes = [
@@ -79,13 +78,9 @@ const routes = [
                         name: 'addData',
                         component: AddData
                     },{
-                        path: '/main/model/addDataUpload',
-                        name: 'addDataUpload',
-                        component: AddDataUpload
-                    },{
-                        path: '/main/model/addDataCrawl',
-                        name: 'addDataCrawl',
-                        component: AddDataCrawl
+                        path: '/main/model/datasourceCreate/:method',
+                        name: 'datasourceCreate',
+                        component: DatasourceCreate
                     },{
                         path: '/main/model/info/:id',
                         name: 'datasourceInfo',
