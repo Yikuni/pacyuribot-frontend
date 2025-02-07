@@ -47,17 +47,5 @@ const modifyModelInfo = async ()=>{
 </template>
 
 <style scoped>
-#box{
 
-  margin: auto;
-  max-width: 600px;
-}
-
-#form{
-  margin: 30px;
-}
-
-#button{
-  width: 100%;
-}
 </style>

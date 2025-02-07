@@ -16,7 +16,7 @@ export const store = reactive({
       }
     },
     modelInfo:{
-
+        id: ''
     },
     tmp: {
         form: {

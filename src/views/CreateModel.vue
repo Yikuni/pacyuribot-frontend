@@ -10,15 +10,15 @@ const createModelForm = reactive({
   name: '',
   description: '',
   deleted: false,
-  owner: store.pb.authStore.record.id
+  owner: store.pb.authStore.record?.id
 })
 const loading = ref(false)
 
 
 const createModel = async ()=>{
-  loading.value = ref(true)
+  loading.value = true
   store.modelInfo = await store.pb.collection('models').create(createModelForm)
-  loading.value = ref(false)
+  loading.value = false
 
   await router.push("/main/model/dataSource")
 }
