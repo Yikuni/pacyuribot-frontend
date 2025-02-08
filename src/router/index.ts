@@ -15,6 +15,7 @@ import CreateModel from "../views/CreateModel.vue";
 import AddData from "../views/model/AddData.vue";
 import DatasourceInfo from "../views/model/DatasourceInfo.vue";
 import DatasourceCreate from "../views/model/DatasourceCreate.vue";
+import CrawlTaskInfo from "../views/model/CrawlTaskInfo.vue";
 
 // 路由配置
 const routes = [
@@ -85,6 +86,10 @@ const routes = [
                         path: '/main/model/info/:id',
                         name: 'datasourceInfo',
                         component: DatasourceInfo
+                    },{
+                        path: '/main/model/crawlTask/:id',
+                        name: 'crawlTaskInfo',
+                        component: CrawlTaskInfo
                     },
                 ]
             }

@@ -22,9 +22,7 @@ onMounted(async()=>{
   <div class="mainContent">
     <el-space :size="50" wrap>
       <div v-for="dataSource in dataSourceList.items" :key="dataSource.id">
-        <router-link :to="'/main/model/info/' + dataSource.id">
-
-
+        <router-link :to="`/main/model/${dataSource.crawl?'crawlTask':'info'}/${dataSource.id}`">
           <el-card
               class="box-card"
               style="width: 250px"
@@ -37,8 +35,6 @@ onMounted(async()=>{
               {{ dataSource.name}}
             </div>
           </el-card>
-
-
         </router-link>
       </div>
       <router-link to="/main/model/addData">

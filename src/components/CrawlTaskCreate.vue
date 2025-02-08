@@ -2,6 +2,7 @@
 
 import {reactive, ref} from "vue";
 import {store} from "../store.ts";
+import type {CrawlTaskRecord} from "../model/crawl.ts";
 
 const props = defineProps({
   datasource_id: {
@@ -9,28 +10,13 @@ const props = defineProps({
     required: true
   }
 })
-interface CrawlTaskConfig {
-  title_filter: boolean;
-  max_length_c: number;
-  max_length_e: number;
-  min_page_content_length: number;
-  allow_origins: string[];
-  dis_allow_origins: string[];
-  target_urls: string[];
-  max_depth: number;
-  allow_external_link: boolean;
-}
 
-interface CrawlTaskRecord {
-  owner: string | undefined;
-  completed: boolean;
-  data_source: string;
-  config: CrawlTaskConfig;
-}
 const crawlTaskRecord: CrawlTaskRecord = reactive({
   owner: store.pb.authStore.record?.id,
   completed: false,
   data_source: props.datasource_id,
+  crawl: true,
+  deleted: false,
   config: {
     title_filter: true,
     max_length_c: 8,

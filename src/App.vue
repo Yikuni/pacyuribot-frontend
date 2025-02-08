@@ -60,7 +60,10 @@ html,body,#app,.el-container{
   margin: 30px;
 }
 
-#button{
+#button, .button{
   width: 100%;
+}
+button:focus, button:focus-visible {
+  outline: none;
 }
 </style>

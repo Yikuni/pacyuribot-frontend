@@ -7,7 +7,7 @@ import {ElMessage, type TableInstance} from "element-plus";
 import FileUpload from "../../components/FileUpload.vue";
 const router = useRouter()
 const id = useRoute().params.id
-const datasource = reactive({data: {name: '', id: ''}})
+const datasource = reactive({data: {name: '', id: '', deleted: false}})
 const files = ref()
 const multipleTableRef = ref<TableInstance>()
 let preName = ''
