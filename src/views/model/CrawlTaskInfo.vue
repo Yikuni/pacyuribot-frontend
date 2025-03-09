@@ -32,9 +32,8 @@ const rename = ()=>{
   preName = data.name
   ElMessage.success("修改名称为: " + preName)
 }
-const getCrawlData = async (page)=>{
-  const end = page * 10
-  const crawlDataObj = await store.pb.collection('crawl_data').getList(end-9, end, {filter: `data_source='${id}'`})
+const getCrawlData = async (page, pageSize)=>{
+  const crawlDataObj = await store.pb.collection('crawl_data').getList(page, pageSize, {filter: `data_source='${id}'`})
   for(let item of crawlDataObj.items){
     item.target_url = decodeURIComponent(item.target_url)
   }
@@ -44,7 +43,7 @@ onBeforeMount(async ()=>{
   datasource.data = await store.pb.collection('data_source').getOne(id)
   configData.data = await store.pb.collection('crawl_task').getFirstListItem(`data_source="${datasource.data.id}"`)
   preName = datasource.data.name
-  await getCrawlData(1)
+  await getCrawlData(1, 20)
 })
 </script>
 
@@ -100,7 +99,7 @@ onBeforeMount(async ()=>{
               </template>
             </el-table-column>
           </el-table>
-          <el-pagination layout="prev, pager, next" :total="crawlData.data.totalItems" />
+          <el-pagination layout="prev, pager, next" :total="crawlData.data.totalItems" @change="getCrawlData"/>
           <!-- TODO 完成具体功能-->
           <el-button type="danger">删除所选</el-button>
           <el-button type="primary">下载所选</el-button>
