@@ -1,0 +1,5 @@
+{
+  "backend": "http://localhost:2514",
+  "pocketbase": "https://pocketbase.yikuni.com",
+  "ui": "http://localhost:/5174"
+}
