@@ -3,6 +3,8 @@
 import {reactive, ref} from "vue";
 import {store} from "../store.ts";
 import type {CrawlTaskRecord} from "../model/crawl.ts";
+import axios from "axios";
+import {ElMessage} from "element-plus";
 
 const props = defineProps({
   datasource_id: {
@@ -44,20 +46,21 @@ const updateAllowOrigin = ()=>{
 const createCrawlTask = async ()=> {
   crawlTaskRecord.data_source = props.datasource_id
   await store.pb.collection('crawl_task').create(crawlTaskRecord)
-  // TODO 发送爬取任务请求
-  // const options = {
-  //   method: 'POST',
-  //   url: 'http://localhost:2514/admin/crawler/crawl',
-  //   params: {datasource: props.datasource_id},
-  //   headers: {
-  //     Authorization: store.pb.authStore.token,
-  //   },
-  // }
-  // axios.request(options).then(function (response) {
-  //   console.log(response.data);
-  // }).catch(function (error) {
-  //   console.error(error);
-  // });
+  const options = {
+    method: 'POST',
+    url: store.config.backend + '/admin/crawler/crawl',
+    params: {datasource: props.datasource_id},
+    headers: {
+      Authorization: store.pb.authStore.token,
+    },
+    data: crawlTaskRecord.config
+  }
+  axios.request(options).then(function () {
+    ElMessage.success("创建任务成功")
+  }).catch(function (error) {
+    ElMessage.error("创建任务失败，请联系网站管理员")
+    console.error(error);
+  });
 }
 defineExpose({
   createCrawlTask,
