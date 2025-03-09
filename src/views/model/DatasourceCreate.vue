@@ -29,13 +29,15 @@ const create = async ()=>{
 
 const activate = async ()=>{
   data.deleted = false
-  await store.pb.collection('data_source').update(datasourceID.value, data);
   if (isUpload){
     ElMessage.success("创建数据源成功")
   }else{
+    data.crawl = true
     await crawlTaskRef.value.createCrawlTask()
     ElMessage.success("创建爬取数据任务成功")
   }
+  await store.pb.collection('data_source').update(datasourceID.value, data);
+
   await router.push("/main/model/dataSource")
 }
 
